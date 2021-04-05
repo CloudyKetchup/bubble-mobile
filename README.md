@@ -1,19 +1,12 @@
 # Bubble app
 
-## Home page
-![Main page](./docs/main.png)
-
-#
-## Discover sitters
-![](./docs/sitters.png)
-
-#
-## Sitter profile
-![](./docs/sitter.png)
-
-#
-## Bookings
-![](./docs/bookings.png)
+<div style="display: grid; grid-template-columns: 250px 250px 250px; grid-gap: 20px; margin-bottom: 20px;">
+  <img src="./docs/login.png" width="250" />
+  <img src="./docs/main.png" width="250" />
+  <img src="./docs/sitters.png" width="250" />
+  <img src="./docs/sitter.png" width="250" />
+  <img src="./docs/bookings.png" width="250" />
+</div>
 
 # Setup
 
