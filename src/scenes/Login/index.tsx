@@ -3,7 +3,7 @@ import React, { useCallback, useState } from "react";
 import { userApi } from "../../api";
 
 import { TextInput, Image, StyleSheet, View } from "react-native";
-import { Button } from "react-native-paper";
+import { Button, withTheme } from "react-native-paper";
 import Toast from "react-native-toast-message";
 
 import { StackScreenProps } from "@react-navigation/stack";
@@ -13,9 +13,9 @@ import { useUserToken } from "../../hooks";
 
 import Logo from "../../../assets/logo-dark-on-light.png";
 
-type LoginScreenProps = StackScreenProps<RootStackParamList>;
+type LoginScreenProps = StackScreenProps<RootStackParamList> & { theme: ReactNativePaper.Theme };
 
-export default function LoginScreen({ navigation }: LoginScreenProps) {
+const LoginScreen = withTheme(({ navigation, theme }: LoginScreenProps) => {
   const [email, setEmail]       = useState<string | null>(null);
   const [password, setPassword] = useState<string | null>(null);
   const [loading, setLoading]   = useState(false);
@@ -50,16 +50,16 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
   }
 
   return (
-    <View style={styles.root}>
+    <View style={{ ...styles.root, backgroundColor: theme.colors.background }}>
       <Image style={styles.logo} source={Logo}/>
       <View style={styles.form}>
         <TextInput
-          style={styles.input}
+          style={{ ...styles.input, backgroundColor: theme.colors.surface }}
           placeholder="Email"
           onChangeText={onValue(setEmail)}
         />
         <TextInput
-          style={styles.input}
+          style={{ ...styles.input, backgroundColor: theme.colors.surface }}
           placeholder="Password"
           onChangeText={onValue(setPassword)}
         />
@@ -78,15 +78,14 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
       <Toast ref={ref => Toast.setRef(ref)} />
     </View>
   );
-}
+});
 
 const styles = StyleSheet.create({
   root: {
     alignItems: "center",
     justifyContent: "center",
     padding: 40,
-    height: "100%",
-    backgroundColor: "white"
+    height: "100%"
   },
   logo: {
     margin: 20,
@@ -101,10 +100,11 @@ const styles = StyleSheet.create({
     margin: 5,
     padding: 10,
     paddingLeft: 15,
-    borderRadius: 5,
-    backgroundColor: "#F5F5F5"
+    borderRadius: 5
   },
   loginButton: {
     margin: 60
   }
 });
+
+export default LoginScreen;
