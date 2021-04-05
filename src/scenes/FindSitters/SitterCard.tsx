@@ -55,7 +55,7 @@ const SitterCard = withTheme(({ sitter, theme }: SitterCardProps) => {
         </View>
         <Queue size={36} />
         <View style={{ ...styles.descriptionContainer, marginLeft: "auto" }}>
-          <Text style={styles.descriptionText}>{hourlyRate}/hr</Text>
+          <Text style={styles.descriptionText}>{hourlyRate}£/hr</Text>
           <Stack size={4} />
           <Text style={styles.descriptionText}>Sits: {sits}</Text>
         </View>

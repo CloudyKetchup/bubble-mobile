@@ -88,7 +88,7 @@ const SitterProfile = withTheme(({ route, theme, navigation }: SitterProfileProp
             </Text>
             <Queue size={24} />
             <Text style={styles.infoText}>
-              {sitter.hourlyRate}/hr
+              {sitter.hourlyRate}£/hr
           </Text>
             <Queue size={24} />
             <Text style={styles.infoText}>
