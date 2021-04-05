@@ -48,13 +48,13 @@ const SitterCard = withTheme(({ sitter, theme }: SitterCardProps) => {
         />
       </View>
       <View style={styles.description}>
-        <View style={{ ...styles.descriptionContainer, alignItems: 'flex-start', minWidth: 150 }}>
+        <View style={{ ...styles.descriptionContainer, alignItems: 'flex-start' }}>
           <Text style={styles.fullName}>{fullName}</Text>
           <Stack size={4} />
           <Rating value={ratingPercentage || "No rating"} color={Boolean(ratingPercentage)}/>
         </View>
         <Queue size={36} />
-        <View style={styles.descriptionContainer}>
+        <View style={{ ...styles.descriptionContainer, marginLeft: "auto" }}>
           <Text style={styles.descriptionText}>{hourlyRate}/hr</Text>
           <Stack size={4} />
           <Text style={styles.descriptionText}>Sits: {sits}</Text>
@@ -91,6 +91,7 @@ const styles = StyleSheet.create({
     fontFamily: "Quicksand-bold"
   },
   description: {
+    width: "60%",
     marginLeft: 20,
     display: "flex",
     flexDirection: "row"
