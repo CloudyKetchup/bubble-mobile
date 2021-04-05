@@ -1,6 +1,6 @@
 import React, { PropsWithChildren, useEffect } from "react";
 import { Image, View, StyleSheet } from "react-native";
-import { Button, Text, withTheme } from "react-native-paper";
+import { Button, Divider, Text, withTheme } from "react-native-paper";
 import { Entypo } from '@expo/vector-icons'; 
 import { Stack, Queue } from "react-native-spacing-system";
 
@@ -76,6 +76,7 @@ const Bookings = withTheme(({ theme }) => {
   return (
     <View style={{ ...styles.root, backgroundColor: theme.colors.background }}>
       <Header title="Your Bookings" />
+      <Divider/>
       <View style={styles.body}>
         {requestedBookings.length > 0 && (
           <>

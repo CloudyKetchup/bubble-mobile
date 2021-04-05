@@ -1,5 +1,5 @@
 import React from "react";
-import { withTheme, Text } from "react-native-paper";
+import { withTheme, Text, Divider } from "react-native-paper";
 import { Image, View, ScrollView, ImageSourcePropType, TouchableWithoutFeedback } from "react-native";
 import { StackScreenProps } from "@react-navigation/stack";
 
@@ -46,6 +46,7 @@ const HomeScreen = withTheme(({ navigation, theme }: HomeProps) => {
   return (
     <View style={{ ...styles.root, backgroundColor: theme.colors.background }}>
       <Header/>
+      <Divider/>
       <ScrollView style={styles.list}>
         <View style={styles.listItem}>
           <ImageCard source={bubblePlusBackground}>

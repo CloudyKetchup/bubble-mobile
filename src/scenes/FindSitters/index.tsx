@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { ScrollView, StyleSheet, View } from "react-native"
-import { Text, withTheme } from "react-native-paper";
+import { Divider, Text, withTheme } from "react-native-paper";
 
 import SitterCard from "./SitterCard";
 
@@ -19,6 +19,7 @@ const FindSittersScene = withTheme(({ theme }) => {
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Discover sitters in your local area</Text>
       </View>
+      <Divider/>
       <ScrollView style={styles.list}>
         {sitters.map(sitter => (
           <View key={sitter.id} style={styles.listItem}>

@@ -1,7 +1,7 @@
 import React from "react";
+import { View, ScrollView, StyleSheet, Image } from "react-native";
 import { Stack, Queue } from "react-native-spacing-system";
-import { View, StyleSheet, Image } from "react-native";
-import { Button, IconButton, Text, withTheme } from "react-native-paper";
+import { Button, Divider, IconButton, Text, withTheme } from "react-native-paper";
 import { StackScreenProps } from "@react-navigation/stack";
 
 import { SitterProfileParamList } from "../../navigation/types";
@@ -28,14 +28,16 @@ function Footer() {
   };
 
   return (
-    <View style={{ bottom: 15, position: "absolute" }}>
-      <Button onPress={onSendMessage} color="#28B99D" mode="contained" dark icon="message">
-        Send a message
-      </Button>
-      <Stack size={16} />
-      <Button onPress={onBook} color="#55427A" mode="contained" dark icon="book">
-        Book
-      </Button>
+    <View style={styles.footer}>
+      <View style={styles.footerContainer}>
+        <Button onPress={onSendMessage} color="#28B99D" mode="contained" dark icon="message">
+          Send a message
+        </Button>
+        <Stack size={16} />
+        <Button onPress={onBook} color="#55427A" mode="contained" dark icon="book">
+          Book
+        </Button>
+      </View>
     </View>
   );
 }
@@ -68,52 +70,56 @@ const SitterProfile = withTheme(({ route, theme, navigation }: SitterProfileProp
         title={`${sitter.firstName}'s Profile`}
         onBack={navigation.goBack}
       />
-      <View style={styles.body}>
-        <Image
-          style={styles.profileImage}
-          source={{ uri: sitter.profileImageUrl }}
-          defaultSource={profileDefault}
-        />
-        <Stack size={16}/>
-        <Text style={styles.fullName}>
-          {sitter.fullName}
-        </Text>
-        <View style={styles.info}>
-          <Text style={styles.infoText}>
-            Rating <Text style={{ color: "#28B99D", fontWeight: "bold" }}>{sitter.ratingPercentage}</Text>
-          </Text>
-          <Queue size={24} />
-          <Text style={styles.infoText}>
-            {sitter.hourlyRate}/hr
-          </Text>
-          <Queue size={24} />
-          <Text style={styles.infoText}>
-            Sits: {sitter.sits}
-          </Text>
-        </View>
-        <View style={{ display: "flex", alignItems: "flex-start" }}>
+      <Divider />
+      <ScrollView style={styles.body}>
+        <View style={styles.bodyContainer}>
+          <Image
+            style={styles.profileImage}
+            source={{ uri: sitter.profileImageUrl }}
+            defaultSource={profileDefault}
+          />
           <Stack size={16} />
-          <Text style={styles.sectionName}>
-            Biography
+          <Text style={styles.fullName}>
+            {sitter.fullName}
           </Text>
-          <Stack size={16} />
-          <Text style={styles.descriptionText}>
-            {sitter.biography}
+          <View style={styles.info}>
+            <Text style={styles.infoText}>
+              Rating <Text style={{ color: "#28B99D", fontWeight: "bold" }}>{sitter.ratingPercentage}</Text>
+            </Text>
+            <Queue size={24} />
+            <Text style={styles.infoText}>
+              {sitter.hourlyRate}/hr
           </Text>
-          <Stack size={16} />
-          {Object.keys(sitter.otherLanguagesSpoken.value).length > 0 && (
-            <View style={{ bottom: 0 }}>
-              <Text style={styles.sectionName}>
-                Other languages
-              </Text>
-              <View style={{ marginTop: 10 }}>
-                {renderOtherLanguages()}
+            <Queue size={24} />
+            <Text style={styles.infoText}>
+              Sits: {sitter.sits}
+            </Text>
+          </View>
+          <View style={{ display: "flex", alignItems: "flex-start" }}>
+            <Stack size={16} />
+            <Text style={styles.sectionName}>
+              Biography
+            </Text>
+            <Stack size={16} />
+            <Text style={styles.descriptionText}>
+              {sitter.biography}
+            </Text>
+            <Stack size={16} />
+            {Object.keys(sitter.otherLanguagesSpoken.value).length > 0 && (
+              <View style={{ bottom: 0 }}>
+                <Text style={styles.sectionName}>
+                  Other languages
+                </Text>
+                <View style={{ marginTop: 10 }}>
+                  {renderOtherLanguages()}
+                </View>
               </View>
-            </View>
-          )}
+            )}
+          </View>
         </View>
-        <Footer/>
-      </View>
+      </ScrollView>
+      <Divider />
+      <Footer />
     </View>
   );
 });
@@ -123,10 +129,12 @@ const styles = StyleSheet.create({
     height: "100%"
   },
   body: {
-    height: "88%",
-    display: "flex",
-    alignItems: "center",
-    padding: 25
+    height: "80%",
+    display: "flex"
+  },
+  bodyContainer: {
+    padding: 25,
+    alignItems: "center"
   },
   header: {
     height: "12%",
@@ -171,6 +179,18 @@ const styles = StyleSheet.create({
   },
   descriptionText: {
     fontSize: 16
+  },
+  footer: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 25,
+    height: "20%",
+    width: "100%"
+  },
+  footerContainer: {
+    height: "100%",
+    width: 300
   }
 });
 
