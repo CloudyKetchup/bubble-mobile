@@ -58,6 +58,12 @@ const App = withTheme(({ theme: { dark, colors } }) => {
 
   return (
     <SafeAreaView style={{ height: "100%", backgroundColor: colors.background }}>
+      <StatusBar
+        animated
+        barStyle={dark ? "light-content" : "dark-content"}
+        backgroundColor={colors.background}
+        translucent
+      />
       <Container>
         <NavigationContainer>
           <Stack.Navigator initialRouteName="Root">
